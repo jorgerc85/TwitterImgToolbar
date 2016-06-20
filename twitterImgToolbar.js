@@ -12,13 +12,19 @@ function observeGalleryDiv() {
         var addedChild = mutation.addedNodes[0];
         var childAddedIsImg = (addedChild.tagName === 'IMG');
         if (childAddedIsImg) {
-          // Add toolbar
+          addImgToolbar(galleryDiv);
         };
       };
     });
   });
   var config = { subtree: true, childList: true };
   observer.observe(galleryDiv, config);
+};
+
+function addImgToolbar(galleryDiv) {
+  var toolbarDiv = document.createElement('div');
+  toolbarDiv.classList.add('img-toolbar');
+  galleryDiv.appendChild(toolbarDiv);
 };
 
 init();
