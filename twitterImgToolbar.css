@@ -6,4 +6,5 @@ div.Gallery-media > div.img-toolbar {
   width: 150px;
   background-color: rgba(0, 0, 255, 0.6);
   border-radius: 2px;
+  z-index: 10000;
 }
