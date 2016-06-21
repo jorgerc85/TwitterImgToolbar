@@ -13,6 +13,7 @@ function observeGalleryDiv() {
         var childAddedIsImg = (addedChild.tagName === 'IMG');
         if (childAddedIsImg) {
           addImgToolbar(galleryDiv);
+          loadTools(addedChild);
         };
       };
     });
@@ -25,6 +26,16 @@ function addImgToolbar(galleryDiv) {
   var toolbarDiv = document.createElement('div');
   toolbarDiv.classList.add('img-toolbar');
   galleryDiv.appendChild(toolbarDiv);
+};
+
+function loadTools(imgChild) {
+  var heightDifference = imgChild.dataset.height - imgChild.height;
+  var widthDifference = imgChild.dataset.width - imgChild.width;
+  var largerHeight = heightDifference > 0;
+  var largerWidth = widthDifference > 0;
+  if (largerHeight || largerWidth) {
+    // Load tools
+  };
 };
 
 init();
