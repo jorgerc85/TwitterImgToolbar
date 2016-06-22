@@ -13,7 +13,6 @@ function observeGalleryDiv() {
         var childAddedIsImg = (addedChild.tagName === 'IMG');
         if (childAddedIsImg) {
           addImgToolbar(galleryDiv);
-          enableTools(addedChild);
         };
       };
     });
@@ -25,6 +24,7 @@ function observeGalleryDiv() {
 function addImgToolbar(galleryDiv) {
   var toolbarDiv = _elementFactory('div', 'img-toolbar', galleryDiv);
   loadTools(galleryDiv, toolbarDiv);
+  enableTools(toolbarDiv);
 };
 
 function loadTools(galleryDiv, toolbarDiv) {
@@ -33,20 +33,8 @@ function loadTools(galleryDiv, toolbarDiv) {
   };
 };
 
-function enableTools(imgChild) {
-  var observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      var heightDifference = imgChild.dataset.height - imgChild.height;
-      var widthDifference = imgChild.dataset.width - imgChild.width;
-      var largerHeight = heightDifference > 0;
-      var largerWidth = widthDifference > 0;
-      if (largerHeight || largerWidth) {
-        // Load tools
-      };
-    });
-  });
-  var config = { attributes: true, attributeOldValue: true };
-  observer.observe(imgChild, config);
+function enableTools(toolbarDiv) {
+  toolbarDiv.addEventListener('mouseover', _enableTools);
 };
 
 function _elementFactory(newElementTag, newElementClass, parentElement) {
@@ -54,6 +42,22 @@ function _elementFactory(newElementTag, newElementClass, parentElement) {
   newElement.classList.add(newElementClass);
   parentElement.appendChild(newElement);
   return newElement;
+};
+
+function _enableTools(event) {
+  event.stopPropagation();
+  var toolbarDiv = event.target.parentElement;
+  var imgChild = toolbarDiv.previousElementSibling;
+  if (!imgChild.hidden) {
+    var heightDifference = imgChild.naturalHeight - imgChild.height;
+    var widthDifference = imgChild.naturalWidth - imgChild.width;
+    var largerHeight = heightDifference > 0;
+    var largerWidth = widthDifference > 0;
+    if (largerHeight || largerWidth) {
+      // Enable tools
+    };
+    toolbarDiv.removeEventListener('mouseover', _enableTools);
+  };
 };
 
 init();
