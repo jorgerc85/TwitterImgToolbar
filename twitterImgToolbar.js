@@ -23,17 +23,13 @@ function observeGalleryDiv() {
 };
 
 function addImgToolbar(galleryDiv) {
-  var toolbarDiv = document.createElement('div');
-  toolbarDiv.classList.add('img-toolbar');
-  galleryDiv.appendChild(toolbarDiv);
+  var toolbarDiv = _elementFactory('div', 'img-toolbar', galleryDiv);
   loadTools(galleryDiv, toolbarDiv);
 };
 
 function loadTools(galleryDiv, toolbarDiv) {
   for (var i = 0; i < 3; i++) {
-    var toolbarButton = document.createElement('div');
-    toolbarButton.classList.add('img-toolbar-button');
-    toolbarDiv.appendChild(toolbarButton);
+    _elementFactory('div', 'img-toolbar-button', toolbarDiv);
   };
 };
 
@@ -51,6 +47,13 @@ function enableTools(imgChild) {
   });
   var config = { attributes: true, attributeOldValue: true };
   observer.observe(imgChild, config);
+};
+
+function _elementFactory(newElementTag, newElementClass, parentElement) {
+  var newElement = document.createElement(newElementTag);
+  newElement.classList.add(newElementClass);
+  parentElement.appendChild(newElement);
+  return newElement;
 };
 
 init();
