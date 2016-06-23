@@ -59,8 +59,15 @@ function _enableTools(event) {
   var galleryContentDiv = document.getElementsByClassName('Gallery-content')[0];
   var imgChild = document.getElementsByClassName('media-image')[0];
   if (!imgChild.hidden) {
+    var toolbarDiv = imgChild.nextElementSibling;
+    var toolbarButtons = toolbarDiv.children;
     var imgDimensions = _calculateImgDimensions(imgChild);
     if (imgDimensions.largerHeight || imgDimensions.largerWidth) {
+      for (toolbarButton of toolbarButtons) {
+        toolbarButton.classList.add('active');
+      };
+    } else {
+      toolbarButtons[0].classList.add('active');
     };
     galleryContentDiv.removeEventListener('mouseover', _enableTools);
   };
