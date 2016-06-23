@@ -4,7 +4,7 @@ div.Gallery-media > div.img-toolbar {
   left: 2%;
   height: 30px;
   width: 150px;
-  background-color: rgba(0, 0, 255, 0.3);
+  background-color: rgba(90, 90, 90, 0.3);
   border-radius: 2px;
   z-index: 10000;
   display: flex;
@@ -17,5 +17,5 @@ div.img-toolbar > div.img-toolbar-button {
 }
 
 div.img-toolbar > div.img-toolbar-button:hover {
-  background-color: rgba(0, 0, 255, 0.6);
+  background-color: rgba(80, 80, 80, 0.4);
 }
