@@ -59,14 +59,21 @@ function _enableTools(event) {
   var galleryContentDiv = document.getElementsByClassName('Gallery-content')[0];
   var imgChild = document.getElementsByClassName('media-image')[0];
   if (!imgChild.hidden) {
-    var heightDifference = imgChild.naturalHeight - imgChild.height;
-    var widthDifference = imgChild.naturalWidth - imgChild.width;
-    var largerHeight = heightDifference > 0;
-    var largerWidth = widthDifference > 0;
-    if (largerHeight || largerWidth) {
-      // Enable tools
+    var imgDimensions = _calculateImgDimensions(imgChild);
+    if (imgDimensions.largerHeight || imgDimensions.largerWidth) {
     };
     galleryContentDiv.removeEventListener('mouseover', _enableTools);
+  };
+};
+
+function _calculateImgDimensions(imgChild) {
+  var heightDifference = imgChild.naturalHeight - imgChild.height;
+  var widthDifference = imgChild.naturalWidth - imgChild.width;
+  var largerHeight = heightDifference > 0;
+  var largerWidth = widthDifference > 0;
+  return {
+    'largerHeight' : largerHeight,
+    'largerWidth' : largerWidth
   };
 };
 
