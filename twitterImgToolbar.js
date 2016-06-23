@@ -28,14 +28,18 @@ function addImgToolbar(galleryDiv) {
 };
 
 function loadTools(galleryDiv, toolbarDiv) {
-  var buttonClasses = ['fa-floppy-o', 'fa-search-plus', 'fa-external-link'];
   for (var i = 0; i < 3; i++) {
     var toolbarButton = _elementFactory('div', 'img-toolbar-button', toolbarDiv);
-    var buttonIcon = _elementFactory('i', 'fa', toolbarButton);
-    buttonIcon.setAttribute('aria-hidden', 'true');
-    buttonIcon.classList.add(buttonClasses[i]);
-    buttonIcon.classList.add('fa-lg');
+    loadIcon(toolbarButton, i);
   };
+};
+
+function loadIcon(toolbarButton, i) {
+  var buttonClasses = ['fa-floppy-o', 'fa-search-plus', 'fa-external-link'];
+  var buttonIcon = _elementFactory('i', 'fa', toolbarButton);
+  buttonIcon.setAttribute('aria-hidden', 'true');
+  buttonIcon.classList.add(buttonClasses[i]);
+  buttonIcon.classList.add('fa-lg');
 };
 
 function enableTools() {
