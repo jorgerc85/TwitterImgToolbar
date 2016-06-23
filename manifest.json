@@ -18,8 +18,12 @@
   "content_scripts": [
     {
       "matches": ["*://twitter.com/*"],
-      "css": ["twitterImgToolbar.css"],
+      "css": ["twitterImgToolbar.css", "vendors/font-awesome-4.6.3/css/font-awesome.min.css"],
       "js": ["twitterImgToolbar.js"]
     }
+  ],
+
+  "web_accessible_resources": [
+    "vendors/font-awesome-4.6.3/fonts/*.*"
   ]
 }

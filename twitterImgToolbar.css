@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('chrome-extension://__MSG_@@extension_id__/vendors/font-awesome-4.6.3/fonts/fontawesome-webfont.woff2');
+}
+
 div.Gallery-media > div.img-toolbar {
   position: absolute;
   top: 2%;
