@@ -28,8 +28,13 @@ function addImgToolbar(galleryDiv) {
 };
 
 function loadTools(galleryDiv, toolbarDiv) {
+  var buttonClasses = ['fa-floppy-o', 'fa-search-plus', 'fa-external-link'];
   for (var i = 0; i < 3; i++) {
-    _elementFactory('div', 'img-toolbar-button', toolbarDiv);
+    var toolbarButton = _elementFactory('div', 'img-toolbar-button', toolbarDiv);
+    var buttonIcon = _elementFactory('i', 'fa', toolbarButton);
+    buttonIcon.setAttribute('aria-hidden', 'true');
+    buttonIcon.classList.add(buttonClasses[i]);
+    buttonIcon.classList.add('fa-lg');
   };
 };
 
