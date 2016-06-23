@@ -24,7 +24,7 @@ function observeGalleryDiv() {
 function addImgToolbar(galleryDiv) {
   var toolbarDiv = _elementFactory('div', 'img-toolbar', galleryDiv);
   loadTools(galleryDiv, toolbarDiv);
-  enableTools(toolbarDiv);
+  enableTools();
 };
 
 function loadTools(galleryDiv, toolbarDiv) {
@@ -33,8 +33,9 @@ function loadTools(galleryDiv, toolbarDiv) {
   };
 };
 
-function enableTools(toolbarDiv) {
-  toolbarDiv.addEventListener('mouseover', _enableTools);
+function enableTools() {
+  var galleryContentDiv = document.getElementsByClassName('Gallery-content')[0];
+  galleryContentDiv.addEventListener('mouseover', _enableTools);
 };
 
 function _elementFactory(newElementTag, newElementClass, parentElement) {
@@ -46,8 +47,8 @@ function _elementFactory(newElementTag, newElementClass, parentElement) {
 
 function _enableTools(event) {
   event.stopPropagation();
-  var toolbarDiv = event.target.parentElement;
-  var imgChild = toolbarDiv.previousElementSibling;
+  var galleryContentDiv = document.getElementsByClassName('Gallery-content')[0];
+  var imgChild = document.getElementsByClassName('media-image')[0];
   if (!imgChild.hidden) {
     var heightDifference = imgChild.naturalHeight - imgChild.height;
     var widthDifference = imgChild.naturalWidth - imgChild.width;
@@ -56,7 +57,7 @@ function _enableTools(event) {
     if (largerHeight || largerWidth) {
       // Enable tools
     };
-    toolbarDiv.removeEventListener('mouseover', _enableTools);
+    galleryContentDiv.removeEventListener('mouseover', _enableTools);
   };
 };
 
